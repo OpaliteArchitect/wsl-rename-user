@@ -1,15 +1,15 @@
 <#
 .SYNOPSIS
     !! WARNING: This terminates all active WSL instances.
-    Renames a WSL user and optionally sets them as the default user.
+    Renames a distro user in WSL.
 .PARAMETER Distro
     The name of the WSL distribution (e.g., Ubuntu, Ubuntu-26.04).
-.PARAMETER OldUser
+.PARAMETER CurrentName
     The current username.
-.PARAMETER NewUser
+.PARAMETER NewName
     The desired new username.
 .EXAMPLE
-    .\Rename-WslUser.ps1 -Distro "Ubuntu-26.04" -OldUser "cringename" -NewUser "coolname"
+    .\Rename-WslUser.ps1 -Distro "Ubuntu-26.04" -CurrentName "cringename" -NewName "coolname"
 #>
 
 param (
@@ -17,23 +17,23 @@ param (
     [string]$Distro,
 
     [Parameter(Mandatory = $true)]
-    [string]$OldUser,
+    [string]$CurrentName,
 
     [Parameter(Mandatory = $true)]
-    [string]$NewUser
+    [string]$NewName
 )
 
 Write-Host "Terminating active WSL instances..." -ForegroundColor Cyan
 wsl --shutdown
 
 Write-Host "Renaming user and home directory inside Linux..." -ForegroundColor Cyan
-wsl -d $Distro -u root -- usermod -l $NewUser -m -d /home/$NewUser $OldUser
+wsl -d $Distro -u root -- usermod -l $NewName -m -d /home/$NewName $CurrentName
 
 Write-Host "Renaming primary group..." -ForegroundColor Cyan
-wsl -d $Distro -u root -- groupmod -n $NewUser $OldUser
+wsl -d $Distro -u root -- groupmod -n $NewName $CurrentName
 
-Write-Host "Reconciling wsl.conf default user..." -ForegroundColor Yellow
-wsl -d $Distro -u root -- sed -i "s/default=$OldUser/default=$NewUser/g" /etc/wsl.conf
+Write-Host "Reconciling default user in wsl.conf..." -ForegroundColor Yellow
+wsl -d $Distro -u root -- sed -i "s/default=$CurrentName/default=$NewName/g" /etc/wsl.conf
 
 Write-Host "Restarting WSL to apply changes..." -ForegroundColor Cyan
 wsl --shutdown
