@@ -2,6 +2,8 @@
 
 A PowerShell script for changing a user's name in Windows Subsystem for Linux 2 (WSL2).
 
+<img width="1280" height="649" alt="wsl-rename-user" src="https://github.com/user-attachments/assets/5fcf9101-5c0f-4dd7-9b53-04fb3a40b9f4" />
+
 ## How to use
 
 You need Windows 10/11 with WSL2 installed.
