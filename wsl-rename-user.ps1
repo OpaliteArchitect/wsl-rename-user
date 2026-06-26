@@ -1,15 +1,30 @@
 <#
+Copyright 2026 OpaliteArchitect
+SPDX-License-Identifier: Apache-2.0
+#>
+
+<#
 .SYNOPSIS
-    !! WARNING: This terminates all active WSL instances.
     Renames a distro user in WSL.
+
+.DESCRIPTION
+    Modifies a username inside a specific WSL distribution.
+    WARNING: This terminates all active WSL instances.
+
 .PARAMETER Distro
     The name of the WSL distribution (e.g., Ubuntu, Ubuntu-26.04).
+
 .PARAMETER CurrentName
     The current username.
+
 .PARAMETER NewName
     The desired new username.
+    
 .EXAMPLE
-    .\Rename-WslUser.ps1 -Distro "Ubuntu-26.04" -CurrentName "cringename" -NewName "coolname"
+    .\wsl-rename-user.ps1 -Distro "Ubuntu-26.04" -CurrentName "cringename" -NewName "coolname"
+
+    Description:
+    Renames the user 'cringename' to 'coolname' inside the Ubuntu-26.04 instance.
 #>
 
 param (
