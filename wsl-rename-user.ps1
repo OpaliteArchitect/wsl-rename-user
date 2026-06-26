@@ -1,4 +1,9 @@
 <#
+Copyright 2026 OpaliteArchitect
+SPDX-License-Identifier: Apache-2.0
+#>
+
+<#
 .SYNOPSIS
     !! WARNING: This terminates all active WSL instances.
     Renames a distro user in WSL.

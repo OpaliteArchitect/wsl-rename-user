@@ -58,4 +58,4 @@ You need Windows 10 or 11 with WSL2 installed.
 
 ## License
 
-This project is licensed under Apache 2.0 license.
+Copyright © 2026 OpaliteArchitect - Licensed under the [Apache-2.0 License](LICENSE).
