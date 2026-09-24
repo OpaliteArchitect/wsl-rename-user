@@ -1,3 +1,8 @@
+> [!CAUTION]
+> **Renaming your user breaks absolute file paths.**
+>
+> Cached data, extensions, package managers, local dependencies, configurations, and anything else referencing the previous name will break. Use this script as a last resort.
+
 # WSL Rename User
 
 A PowerShell script to change the name of a user in Windows Subsystem for Linux 2 (WSL2).
